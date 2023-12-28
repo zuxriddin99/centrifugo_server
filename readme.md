@@ -6,6 +6,7 @@
 For connection Centrifugo need to connect websocket with ws://localhost:8001/connection/websocket address
 and subscribe main chanel with jwt token. bottom have JS example
 
+`"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwiZXhwIjoxNzA0MjgxNTc1LCJpYXQiOjE3MDM2NzY3NzV9.bDb4DcCm5D4_VPO6v3xsNLk_4BG74AiowYHO4dJaHxg"`
 ```javascript
 <script src="https://unpkg.com/centrifuge@5.0.1/dist/centrifuge.js"></script>
 <script type="text/javascript">
