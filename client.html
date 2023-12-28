@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title>Centrifugo quick start</title>
+</head>
+<body>
+<script src="https://unpkg.com/centrifuge@5.0.1/dist/centrifuge.js"></script>
+<script type="text/javascript">
+    const user_id = 8; // need to set self request user id
+    const centrifuge = new Centrifuge("ws://127.0.0.1:8001/connection/websocket", {
+        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAzNzkzMjA0LCJpYXQiOjE3MDM3MTk0MDQsImp0aSI6IjM3NWMxMTNmNmJmZTQ0MDFiYzI3MDhjZTFhZWY1MzgyIiwidXNlcl9pZCI6OH0.5hVlOwRc5_ABuDjkcn8jIci2_PAsaLv5k3bCPtFAGFg"
+    });
+
+    centrifuge.on('connecting', function (ctx) {
+        console.log(`connecting: ${ctx.code}, ${ctx.reason}`);
+    }).on('connected', function (ctx) {
+        console.log(`connected over ${ctx.transport}`);
+    }).on('disconnected', function (ctx) {
+        console.log(`disconnected: ${ctx.code}, ${ctx.reason}`);
+    }).connect();
+
+    const sub = centrifuge.newSubscription(`main`);
+    sub.on('publication', function (ctx) {
+        console.log(ctx.data);
+    }).on('subscribing', function (ctx) {
+        console.log(`subscribing: ${ctx.code}, ${ctx.reason}`);
+    }).on('subscribed', function (ctx) {
+        console.log('subscribed', ctx);
+    }).on('unsubscribed', function (ctx) {
+        console.log(`unsubscribed: ${ctx.code}, ${ctx.reason}`);
+    }).subscribe();
+</script>
+</body>
+
+</html>

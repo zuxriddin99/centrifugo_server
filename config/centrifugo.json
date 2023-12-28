@@ -1,0 +1,29 @@
+{
+  "token_hmac_secret_key": "django-insecure-m1ok4wat8e8$lp085-@i9pkp4u5ys^e^_dtjo*$9s#5szq_md1",
+  "api_key": "0dc8f5f7-3f08-4bad-938f-9ee0d906e1a3",
+  "debug": true,
+  "log_level": "info",
+  "engine": "redis",
+  "redis_address": "redis://redis:6379",
+  "allowed_origins": [
+    "*"
+  ],
+  "proxy_http_headers": [
+    "*"
+  ],
+  "namespaces": [
+    {
+      "name": "rooms",
+      "publish": true,
+      "proxy_publish": true,
+      "proxy_subscribe": true,
+      "history_size": 10,
+      "history_ttl": "300s"
+    }
+  ],
+  "admin": true,
+  "admin_password": "admin",
+  "admin_secret": "0dc8f59ee0d906e1a3",
+  "allow_subscribe_for_anonymous": true,
+  "allow_subscribe_for_client": true
+}
